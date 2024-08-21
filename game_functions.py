@@ -1,6 +1,9 @@
 import sys
 
 import pygame
+from pygame import Surface
+
+import game_settings as s
 
 
 def check_events() -> None:
@@ -9,5 +12,6 @@ def check_events() -> None:
             sys.exit()
 
 
-def update_screen() -> None:
+def update_screen(screen: Surface) -> None:
+    screen.fill(s.bg_color)
     pygame.display.flip()
