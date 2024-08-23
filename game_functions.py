@@ -5,6 +5,8 @@ from pygame import Surface
 
 import game_settings as s
 
+from player import Bird
+
 
 def check_events() -> None:
     for event in pygame.event.get():
@@ -12,6 +14,7 @@ def check_events() -> None:
             sys.exit()
 
 
-def update_screen(screen: Surface) -> None:
+def update_screen(screen: Surface, player: Bird) -> None:
     screen.fill(s.bg_color)
+    player.draw_bird()
     pygame.display.flip()
