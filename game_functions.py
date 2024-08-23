@@ -20,8 +20,17 @@ def check_events() -> None:
 
 
 def check_keydown_events(event: Event) -> None:
-    if event.key == pygame.K_SPACE:
-        print("fly") 
+    if event.key == pygame.K_SPACE and not s.flying:
+        Thread(target=fly, daemon=True).start()
+
+
+def fly() -> None:
+    original_gravity: float = s.gravity
+    s.gravity = -(original_gravity * 3)
+    s.flying = True
+    time.sleep(0.2)
+    s.gravity = original_gravity
+    s.flying = False
 
 
 def update_screen(screen: Surface, player: Bird) -> None:
