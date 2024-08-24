@@ -4,10 +4,12 @@ from pygame.sprite import Sprite, Group
 
 import game_settings as s
 
+from typing import Literal
+
 
 class Pipe(Sprite):
     def __init__(self, screen: Surface, pipe_group: Group,
-                 size: int=1, orientation: int=0) -> None:
+                 size: Literal[1,2,3], orientation: Literal[0,1]) -> None:
         super().__init__()
 
         self.screen: Surface = screen
@@ -15,7 +17,7 @@ class Pipe(Sprite):
 
         self.image: Surface = self.set_sprite(size)
         self.mask: Mask = pygame.mask.from_surface(self.image)
-        
+
         self.rect: Rect = self.image.get_rect()
         self.rect.left = self.screen_rect.right
 
@@ -50,7 +52,9 @@ class Pipe(Sprite):
     def set_orientation(self, orientation) -> None:
         match orientation:
             case 0:
+                # bottom
                 self.rect.bottom = self.screen_rect.bottom
             case 1:
+                # top
                 self.image = pygame.transform.rotate(self.image, 180)
                 self.rect.top = self.screen_rect.top

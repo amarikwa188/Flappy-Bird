@@ -7,6 +7,7 @@ import game_settings as s
 
 from player import Bird
 from pipe import Pipe
+from spawner import Spawner
 
 
 def run_game() -> None:
@@ -17,7 +18,7 @@ def run_game() -> None:
                                                s.screen_height))
 
     pipe_group: Group = Group()
-    pipe: Pipe = Pipe(screen, pipe_group, 3, 0)
+    spawner: Spawner = Spawner(screen, pipe_group)
 
     player_group: Group = Group()
     player: Bird = Bird(screen, player_group, pipe_group)
