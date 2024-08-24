@@ -17,7 +17,7 @@ def run_game() -> None:
                                                s.screen_height))
 
     pipe_group: Group = Group()
-    pipe: Pipe = Pipe(screen, pipe_group)
+    pipe: Pipe = Pipe(screen, pipe_group, 0, 1)
 
     player_group: Group = Group()
     player: Bird = Bird(screen, player_group, pipe_group)

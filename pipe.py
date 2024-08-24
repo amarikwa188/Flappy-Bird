@@ -17,8 +17,9 @@ class Pipe(Sprite):
             .convert_alpha()
         self.mask: Mask = pygame.mask.from_surface(self.image)
         self.rect: Rect = self.image.get_rect()
-        self.rect.bottom = self.screen_rect.bottom
         self.rect.left = self.screen_rect.right
+
+        self.set_orientation(orientation)
 
         pipe_group.add(self)
 
@@ -28,3 +29,25 @@ class Pipe(Sprite):
     def update(self) -> None:
         self.x -= s.bg_speed
         self.rect.centerx = self.x
+
+
+    def set_sprite(self, size) -> Surface:
+        match size:
+            # set sprite image
+            case 1:
+                # small
+                pass
+            case 2:
+                # medium
+                pass
+            case 3:
+                # large
+                pass
+
+    def set_orientation(self, orientation) -> None:
+        match orientation:
+            case 0:
+                self.rect.bottom = self.screen_rect.bottom
+            case 1:
+                self.image = pygame.transform.rotate(self.image, 180)
+                self.rect.top = self.screen_rect.top
