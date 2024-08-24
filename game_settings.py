@@ -14,3 +14,4 @@ last_touched: float = 0
 
 ## obstacle stats
 bg_speed: float = 0.1
+spawn_frequency: float = 2.0

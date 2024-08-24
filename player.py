@@ -1,3 +1,4 @@
+import sys
 import time
 
 import pygame
@@ -47,7 +48,7 @@ class Bird(Sprite):
         if pygame.sprite.spritecollide(self, self.pipe_group, False):
             if pygame.sprite.spritecollide(self, self.pipe_group, False,
                                            pygame.sprite.collide_mask):
-                print("collided")
+                sys.exit()
 
 
     def draw_bird(self) -> None:
