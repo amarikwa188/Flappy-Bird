@@ -7,15 +7,15 @@ import game_settings as s
 
 class Pipe(Sprite):
     def __init__(self, screen: Surface, pipe_group: Group,
-                 size: int=0, orientation: int=0) -> None:
+                 size: int=1, orientation: int=0) -> None:
         super().__init__()
 
         self.screen: Surface = screen
         self.screen_rect: Rect = self.screen.get_rect()
 
-        self.image: Surface = pygame.image.load("sprites/pipe.png")\
-            .convert_alpha()
+        self.image: Surface = self.set_sprite(size)
         self.mask: Mask = pygame.mask.from_surface(self.image)
+        
         self.rect: Rect = self.image.get_rect()
         self.rect.left = self.screen_rect.right
 
@@ -36,13 +36,16 @@ class Pipe(Sprite):
             # set sprite image
             case 1:
                 # small
-                pass
+                return pygame.image.load("sprites/pipe_s.png").convert_alpha()
             case 2:
                 # medium
-                pass
+                return pygame.image.load("sprites/pipe_m.png").convert_alpha()
             case 3:
                 # large
-                pass
+                return pygame.image.load("sprites/pipe_l.png").convert_alpha()
+        
+        raise ValueError(f"Invalid pipe size: {size}")
+            
 
     def set_orientation(self, orientation) -> None:
         match orientation:
