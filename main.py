@@ -27,6 +27,7 @@ def run_game() -> None:
         gf.check_events()
         player.update()
         pipe_group.update()
+        gf.clear_pipes(pipe_group)
         gf.update_screen(screen, player, pipe_group)
 
 

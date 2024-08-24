@@ -10,6 +10,7 @@ from pygame.event import Event
 import game_settings as s
 
 from player import Bird
+from pipe import Pipe
 
 
 def check_events() -> None:
@@ -41,6 +42,14 @@ def fly() -> None:
 
     s.gravity = original_gravity   
     s.flying = False
+
+
+def clear_pipes(pipe_group: Group) -> None:
+    pipe_list: list[Pipe] = pipe_group.sprites()
+
+    for pipe in pipe_list:
+        if pipe.rect.right <= 0:
+            pipe_group.remove(pipe)
 
 
 def update_screen(screen: Surface, player: Bird, pipe_group: Group) -> None:
