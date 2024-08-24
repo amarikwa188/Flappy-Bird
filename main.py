@@ -1,5 +1,6 @@
 import pygame
 from pygame import Surface
+from pygame.sprite import Group
 
 import game_functions as gf
 import game_settings as s
@@ -14,7 +15,8 @@ def run_game() -> None:
     screen: Surface = pygame.display.set_mode((s.screen_width,
                                                s.screen_height))
 
-    player: Bird = Bird(screen)
+    player_group: Group = Group()
+    player: Bird = Bird(screen, player_group)
 
     while True:
         gf.check_events()

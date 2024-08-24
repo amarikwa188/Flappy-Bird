@@ -6,19 +6,24 @@ from pygame.sprite import Sprite, Group
 
 import game_settings as s
 
-class Bird:
-    def __init__(self, screen: Surface) -> None:
+class Bird(Sprite):
+    def __init__(self, screen: Surface, bird_group: Group) -> None:
+        super().__init__()
+
         self.screen: Surface = screen
         self.screen_rect: Rect = self.screen.get_rect()
 
         self.image: Surface = pygame.image.load("sprites/circle.png") \
         .convert_alpha()
+        self.mask: Mask = pygame.mask.from_surface(self.image)
         self.rect: Rect = self.image.get_rect()
 
         self.rect.centerx = self.screen_rect.centerx
         self.rect.centery = 100
 
         self.y: float = float(self.rect.centery)
+
+        bird_group.add(self)
 
 
     def update(self) -> None:
