@@ -7,7 +7,8 @@ from pygame.sprite import Sprite, Group
 import game_settings as s
 
 class Bird(Sprite):
-    def __init__(self, screen: Surface, bird_group: Group) -> None:
+    def __init__(self, screen: Surface, bird_group: Group,
+                 pipe_group: Group) -> None:
         super().__init__()
 
         self.screen: Surface = screen
@@ -24,6 +25,7 @@ class Bird(Sprite):
         self.y: float = float(self.rect.centery)
 
         bird_group.add(self)
+        self.pipe_group: Group = pipe_group
 
 
     def update(self) -> None:
@@ -38,7 +40,15 @@ class Bird(Sprite):
             self.y += s.gravity
             self.rect.centery = self.y
 
+        self.check_collisions()
+
  
+    def check_collisions(self) -> None:
+        if pygame.sprite.spritecollide(self, self.pipe_group, False):
+            if pygame.sprite.spritecollide(self, self.pipe_group, False,
+                                           pygame.sprite.collide_mask):
+                print("collided")
+
 
     def draw_bird(self) -> None:
         self.screen.blit(self.image, self.rect)

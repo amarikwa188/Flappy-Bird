@@ -7,7 +7,7 @@ import game_settings as s
 
 class Pipe(Sprite):
     def __init__(self, screen: Surface, pipe_group: Group,
-                 size: int, orientation: int) -> None:
+                 size: int=0, orientation: int=0) -> None:
         super().__init__()
 
         self.screen: Surface = screen

@@ -16,11 +16,11 @@ def run_game() -> None:
     screen: Surface = pygame.display.set_mode((s.screen_width,
                                                s.screen_height))
 
-    player_group: Group = Group()
-    player: Bird = Bird(screen, player_group)
-
     pipe_group: Group = Group()
     pipe: Pipe = Pipe(screen, pipe_group)
+
+    player_group: Group = Group()
+    player: Bird = Bird(screen, player_group, pipe_group)
 
     while True:
         gf.check_events()

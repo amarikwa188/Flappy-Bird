@@ -13,4 +13,4 @@ touching_ceiling: bool = False
 last_touched: float = 0
 
 ## obstacle stats
-bg_speed: float = 0.2
+bg_speed: float = 0.1
