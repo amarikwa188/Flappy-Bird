@@ -9,9 +9,10 @@ bg_color: tuple[int,int,int] = (200,200,200)
 ## character stats
 gravity: float = 0.25
 flying: bool =  False
+upward_force: float = 0.4
 touching_ceiling: bool = False
 last_touched: float = 0
 
 ## obstacle stats
 bg_speed: float = 0.1
-spawn_frequency: float = 2.0
+spawn_frequency: float = 1.5

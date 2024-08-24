@@ -22,10 +22,11 @@ class Spawner:
 
     def spawn_pipes(self) -> None:
         while True:
-            sizes: set[int] = {1,2,3}
-            size1: int = rng.choice(tuple(sizes))
-            size2: int =  rng.choice(tuple(sizes - {size1}))
+            size1: int = rng.randint(1,3)
+            size2: int = 2 if size1 == 2 else 3 if size1 == 1 else 1
+
             Pipe(self.screen, self.pipe_group, size1, 0)
             Pipe(self.screen, self.pipe_group, size2, 1)
 
             time.sleep(self.frequency)
+
