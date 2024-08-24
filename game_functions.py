@@ -26,9 +26,18 @@ def check_keydown_events(event: Event) -> None:
 
 def fly() -> None:
     original_gravity: float = s.gravity
-    s.gravity = -(original_gravity * 3)
+    upward_force: float = 0.5
     s.flying = True
-    time.sleep(0.2)
+
+    while upward_force > 0:
+        if s.touching_ceiling:
+            s.touching_ceiling = False
+            break
+        
+        s.gravity = -upward_force
+        time.sleep(0.05)
+        upward_force -= 0.1
+
     s.gravity = original_gravity
     s.flying = False
 

@@ -6,5 +6,7 @@ screen_height: int = 400
 bg_color: tuple[int,int,int] = (200,200,200)
 
 # gameplay settings
-gravity: float = 0.1
+gravity: float = 0.2
 flying: bool =  False
+touching_ceiling: bool = False
+last_touched: float = 0
