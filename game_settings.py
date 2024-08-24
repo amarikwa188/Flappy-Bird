@@ -7,7 +7,7 @@ bg_color: tuple[int,int,int] = (200,200,200)
 
 # gameplay settings
 ## character stats
-gravity: float = 0.2
+gravity: float = 0.25
 flying: bool =  False
 touching_ceiling: bool = False
 last_touched: float = 0
