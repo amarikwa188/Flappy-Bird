@@ -4,6 +4,7 @@ from threading import Thread
 
 import pygame
 from pygame import Surface
+from pygame.sprite import Group
 from pygame.event import Event
 
 import game_settings as s
@@ -42,7 +43,8 @@ def fly() -> None:
     s.flying = False
 
 
-def update_screen(screen: Surface, player: Bird) -> None:
+def update_screen(screen: Surface, player: Bird, pipe_group: Group) -> None:
     screen.fill(s.bg_color)
     player.draw_bird()
+    pipe_group.draw(screen)
     pygame.display.flip()

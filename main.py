@@ -6,6 +6,7 @@ import game_functions as gf
 import game_settings as s
 
 from player import Bird
+from pipe import Pipe
 
 
 def run_game() -> None:
@@ -18,10 +19,14 @@ def run_game() -> None:
     player_group: Group = Group()
     player: Bird = Bird(screen, player_group)
 
+    pipe_group: Group = Group()
+    pipe: Pipe = Pipe(screen, pipe_group)
+
     while True:
         gf.check_events()
         player.update()
-        gf.update_screen(screen, player)
+        pipe_group.update()
+        gf.update_screen(screen, player, pipe_group)
 
 
 if __name__ == "__main__":
