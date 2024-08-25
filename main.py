@@ -21,7 +21,7 @@ def run_game() -> None:
     ui: UIHandler = UIHandler(screen)
 
     pipe_group: Group = Group()
-    spawner: Spawner = Spawner(screen, pipe_group, ui)
+    # spawner: Spawner = Spawner(screen, pipe_group, ui)
 
     player_group: Group = Group()
     player: Bird = Bird(screen, player_group, pipe_group)
