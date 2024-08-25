@@ -9,6 +9,8 @@ from player import Bird
 from pipe import Pipe
 from spawner import Spawner
 
+from ui_handler import UIHandler
+
 
 def run_game() -> None:
     pygame.init()
@@ -16,9 +18,10 @@ def run_game() -> None:
 
     screen: Surface = pygame.display.set_mode((s.screen_width,
                                                s.screen_height))
+    ui: UIHandler = UIHandler(screen)
 
     pipe_group: Group = Group()
-    spawner: Spawner = Spawner(screen, pipe_group)
+    spawner: Spawner = Spawner(screen, pipe_group, ui)
 
     player_group: Group = Group()
     player: Bird = Bird(screen, player_group, pipe_group)
@@ -28,7 +31,7 @@ def run_game() -> None:
         player.update()
         pipe_group.update()
         gf.clear_pipes(pipe_group)
-        gf.update_screen(screen, player, pipe_group)
+        gf.update_screen(screen, player, pipe_group, ui)
 
 
 if __name__ == "__main__":

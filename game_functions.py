@@ -12,6 +12,8 @@ import game_settings as s
 from player import Bird
 from pipe import Pipe
 
+from ui_handler import UIHandler
+
 
 def check_events() -> None:
     for event in pygame.event.get():
@@ -52,8 +54,10 @@ def clear_pipes(pipe_group: Group) -> None:
             pipe_group.remove(pipe)
 
 
-def update_screen(screen: Surface, player: Bird, pipe_group: Group) -> None:
+def update_screen(screen: Surface, player: Bird, pipe_group: Group,
+                  ui: UIHandler) -> None:
     screen.fill(s.bg_color)
     player.draw_bird()
     pipe_group.draw(screen)
+    ui.draw_ui()
     pygame.display.flip()

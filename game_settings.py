@@ -1,6 +1,6 @@
 # screen dimensions
-screen_width: int = 700
-screen_height: int = 400
+screen_width: int = 400
+screen_height: int = 450
 
 # colors
 bg_color: tuple[int,int,int] = (200,200,200)
@@ -15,4 +15,4 @@ last_touched: float = 0
 
 ## obstacle stats
 bg_speed: float = 0.1
-spawn_frequency: float = 1.5
+spawn_frequency: float = 1.4

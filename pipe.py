@@ -4,16 +4,21 @@ from pygame.sprite import Sprite, Group
 
 import game_settings as s
 
+from ui_handler import UIHandler
+
 from typing import Literal
 
 
 class Pipe(Sprite):
     def __init__(self, screen: Surface, pipe_group: Group,
-                 size: Literal[1,2,3], orientation: Literal[0,1]) -> None:
+                 size: Literal[1,2,3], orientation: Literal[0,1],
+                 ui: UIHandler) -> None:
         super().__init__()
 
         self.screen: Surface = screen
         self.screen_rect: Rect = self.screen.get_rect()
+
+        self.ui: UIHandler = ui
 
         self.image: Surface = self.set_sprite(size)
         self.mask: Mask = pygame.mask.from_surface(self.image)
@@ -31,6 +36,8 @@ class Pipe(Sprite):
     def update(self) -> None:
         self.x -= s.bg_speed
         self.rect.centerx = self.x
+        if self.rect.centerx == self.screen_rect.centerx:
+            self.ui.score += 0.05
 
 
     def set_sprite(self, size) -> Surface:
@@ -38,13 +45,13 @@ class Pipe(Sprite):
             # set sprite image
             case 1:
                 # small
-                return pygame.image.load("sprites/pipe_s.png").convert_alpha()
+                return pygame.image.load("sprites/pipe_s2.png").convert_alpha()
             case 2:
                 # medium
-                return pygame.image.load("sprites/pipe_m.png").convert_alpha()
+                return pygame.image.load("sprites/pipe_m2.png").convert_alpha()
             case 3:
                 # large
-                return pygame.image.load("sprites/pipe_l.png").convert_alpha()
+                return pygame.image.load("sprites/large_pipe.png").convert_alpha()
         
         raise ValueError(f"Invalid pipe size: {size}")
             
