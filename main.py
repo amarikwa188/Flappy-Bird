@@ -6,7 +6,6 @@ import game_functions as gf
 import game_settings as s
 
 from player import Bird
-from pipe import Pipe
 from spawner import Spawner
 
 from ui_handler import UIHandler
