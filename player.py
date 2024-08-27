@@ -7,9 +7,18 @@ from pygame.sprite import Sprite, Group
 
 import game_settings as s
 
+
 class Bird(Sprite):
+    """Represents an instance of the player object."""
     def __init__(self, screen: Surface, bird_group: Group,
                  pipe_group: Group) -> None:
+        """
+        Initializes an instance of the player character.
+
+        :param screen: the game screen.
+        :param bird_group: a sprite group containing the player.
+        :param pipe_group: a sprite group containing the pipes.
+        """
         super().__init__()
 
         self.screen: Surface = screen
@@ -30,6 +39,9 @@ class Bird(Sprite):
 
 
     def update(self) -> None:
+        """
+        Update the position of the player.
+        """
         if self.rect.top == 0 and (time.time()-s.last_touched) > 0.1: 
             s.touching_ceiling = True
             s.last_touched = time.time()
@@ -45,6 +57,9 @@ class Bird(Sprite):
 
  
     def check_collisions(self) -> None:
+        """
+        Check for collisions with obstacles.
+        """
         if pygame.sprite.spritecollide(self, self.pipe_group, False):
             if pygame.sprite.spritecollide(self, self.pipe_group, False,
                                            pygame.sprite.collide_mask):
@@ -52,4 +67,7 @@ class Bird(Sprite):
 
 
     def draw_bird(self) -> None:
+        """
+        Draw the player to the screen.
+        """
         self.screen.blit(self.image, self.rect)
