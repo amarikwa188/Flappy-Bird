@@ -32,8 +32,9 @@ def check_keydown_events(event: Event) -> None:
 
     :param event: the given input event.
     """
-    if event.key == pygame.K_SPACE and not s.flying:
-        Thread(target=fly, daemon=True).start()
+    pass
+    # if event.key == pygame.K_SPACE and not s.flying:
+    #     Thread(target=fly, daemon=True).start()
 
 
 def fly() -> None:

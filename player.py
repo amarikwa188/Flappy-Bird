@@ -48,9 +48,9 @@ class Bird(Sprite):
         """
         Update the position of the player.
         """
-        if self.rect.top == 0 and (time.time()-s.last_touched) > 0.1: 
-            s.touching_ceiling = True
-            s.last_touched = time.time()
+        # if self.rect.top == 0 and (time.time()-s.last_touched) > 0.1: 
+        #     s.touching_ceiling = True
+        #     s.last_touched = time.time()
 
         # apply gravity
         if s.gravity > 0 and self.rect.bottom <= self.screen_rect.bottom:
