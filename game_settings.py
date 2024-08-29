@@ -1,5 +1,9 @@
+import time
+
 # meta data
 target_framerate: int = 60
+delta_time: float = 0.0
+last_time: float = 0.0
 
 # screen dimensions
 screen_width: int = 400

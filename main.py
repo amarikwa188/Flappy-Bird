@@ -1,3 +1,5 @@
+import time
+
 import pygame
 from pygame import Surface
 from pygame.sprite import Group
