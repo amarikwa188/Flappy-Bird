@@ -37,25 +37,25 @@ def check_keydown_events(event: Event) -> None:
     #     Thread(target=fly, daemon=True).start()
 
 
-def fly() -> None:
-    """
-    Handle player flight.
-    """
-    s.flying = True
-    original_gravity: float = s.gravity
-    upward_force: float = s.upward_force
+# def fly() -> None:
+#     """
+#     Handle player flight.
+#     """
+#     s.flying = True
+#     original_gravity: float = s.gravity
+#     upward_force: float = s.upward_force
 
-    while upward_force > 0:
-        if s.touching_ceiling:
-            s.touching_ceiling = False
-            break
+#     while upward_force > 0:
+#         if s.touching_ceiling:
+#             s.touching_ceiling = False
+#             break
         
-        s.gravity = -upward_force
-        time.sleep(0.05)
-        upward_force -= 0.1
+#         s.gravity = -upward_force
+#         time.sleep(0.05)
+#         upward_force -= 0.1
 
-    s.gravity = original_gravity   
-    s.flying = False
+#     s.gravity = original_gravity   
+#     s.flying = False
 
 
 def clear_pipes(pipe_group: Group) -> None:
